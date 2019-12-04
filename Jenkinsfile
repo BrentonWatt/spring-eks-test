@@ -25,14 +25,5 @@ containers: [
       }
     }
 
-//     stage('Helm Chart Deploy') {
-//       container('maven') {
-//         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds',
-//                                           usernameVariable: 'USER',
-//                                           passwordVariable: 'PASS')]) {
-//           sh 'mvn -B com.deviceinsight.helm:helm-maven-plugin:2.1.0:deploy'
-//         }
-//       }
-//     }
   }
 }
