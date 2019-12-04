@@ -77,6 +77,7 @@
                 <configuration>
                     <chartName>bbd-spring-demo</chartName>
                     <chartRepoUrl>https://kubernetes-charts.storage.googleapis.com/</chartRepoUrl>
+                    <helmVersion>2.16.1</helmVersion>
                 </configuration>
                 <executions>
                     <execution>
