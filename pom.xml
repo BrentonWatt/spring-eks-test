@@ -76,8 +76,11 @@
                 <version>2.1.0</version>
                 <configuration>
                     <chartName>bbd-spring-demo</chartName>
-                    <chartRepoUrl>https://kubernetes-charts.storage.googleapis.com/</chartRepoUrl>
-                    <helmVersion>2.16.1</helmVersion>
+                    <chartRepoUrl>http://helm-chartmusuem-chartmusuem.jenkinsci.svc.cluster.local:8080</chartRepoUrl>
+                    <chartFolder>charts/${project.artifactId}</chartFolder>
+                    <helmVersion>2.13.0</helmVersion>
+                    <strictLint>true</strictLint>
+                    <valuesFile>charts/${project.artifactId}/values.yaml</valuesFile>
                 </configuration>
                 <executions>
                     <execution>
