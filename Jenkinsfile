@@ -17,7 +17,11 @@ containers: [
     }
     stage('Build Docker Jib ') {
       container('maven') {
-        sh 'mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Djib.to.auth.username=$USER -Djib.to.auth.password=$PASS'
+        withCredentials([usernamePassword(credentialsId: 'ecr-creds',
+                                          usernameVariable: 'USER',
+                                          passwordVariable: 'PASS')]) {
+          sh 'mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Djib.to.auth.username=$USER -Djib.to.auth.password=$PASS'
+        }
       }
     }
 
