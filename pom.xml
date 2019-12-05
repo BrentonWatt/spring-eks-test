@@ -70,6 +70,7 @@
                 <configuration>
                     <to>
                         <image>810201417706.dkr.ecr.eu-west-1.amazonaws.com/bbd-spring-demo:${project.version}</image>
+                        <credHelper>ecr-login</credHelper>
                     </to>
                 </configuration>
             </plugin>
