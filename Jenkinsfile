@@ -27,8 +27,9 @@ volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws'),
     }
     stage('Build Docker Jib ') {
       container('maven') {
-          sh 'AWS_PROFILE=ecr-user aws iam get-user'
-          sh 'AWS_PROFILE=ecr-user mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build'
+          sh 'unset AWS_ACCESS_KEY_ID && unset AWS_ACCESS_KEY_ID'
+          sh 'AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials | sed 0d) && AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials | sed 1d)'
+          sh 'mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build'
       }
     }
 
