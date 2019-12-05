@@ -3,7 +3,8 @@ containers: [
     containerTemplate(name: 'jnlp', image: 'jenkins/jnlp-slave:alpine'),
     containerTemplate(name: 'maven', image: 'maven:3.6.3-jdk-11', ttyEnabled: true, command: 'cat')
   ],
-volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws')]) {
+volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws'),
+          configMapVolume(configMapName: 'ecr-dockerconfig', mountPath: '/root/.docker')]) {
   node(POD_LABEL) {
     stage('Install ECR Helper') {
       container('maven') {
