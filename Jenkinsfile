@@ -7,7 +7,7 @@ volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws')]) {
   node(POD_LABEL) {
     stage('Install ECR Helper') {
       container('maven') {
-        sh 'apt install amazon-ecr-credential-helper'
+        sh 'apt update && apt install amazon-ecr-credential-helper -y'
       }
     }
     stage('Build a Maven project') {
