@@ -1,4 +1,4 @@
-def gitHash
+def GIT_HASH
 podTemplate(
 containers: [
     containerTemplate(name: 'jnlp', image: 'jenkins/jnlp-slave:alpine'),
@@ -33,8 +33,9 @@ volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws'),
           sh 'unset AWS_ACCESS_KEY_ID && unset AWS_SECRET_ACCESS_KEY'
           sh 'AWS_ACCESS_KEY_ID=$(sed -n \'1p\' ~/.aws/credentials) && AWS_SECRET_ACCESS_KEY=$(sed -n \'2p\' ~/.aws/credentials)'
           sh 'echo $AWS_ACCESS_KEY_ID'
-          sh 'echo $gitHASH'
-          sh 'mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Dversion.number=$gitHash'
+          sh 'echo ${GIT_HASH}'
+          sh 'echo $GIT_HASH'
+          sh 'mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Dversion.number=$GIT_HASH'
       }
     }
 
