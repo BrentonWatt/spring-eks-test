@@ -39,7 +39,7 @@ volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws'),
           sh 'echo ${GIT_HASH}'
           echo "${GIT_HASH}"
           echo "${gitcom}"
-          sh 'echo $gitcom'
+          sh 'echo ${gitcom}'
           sh 'mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Dversion.number=${gitcom}'
       }
     }
