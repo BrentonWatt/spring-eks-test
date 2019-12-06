@@ -21,6 +21,8 @@ volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws'),
         sh 'mvn -B clean package'
         echo "scm : ${scmInfo}"
         GIT_HASH="${scmInfo.GIT_COMMIT}"
+        echo "${GIT_HASH}"
+        sh 'echo $GIT_HASH'
       }
     }
     stage('Build Integration Tests') {
