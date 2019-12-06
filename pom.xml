@@ -90,7 +90,7 @@
                 <version>1.6.1</version>
                 <configuration>
                     <to>
-                        <image>810201417706.dkr.ecr.eu-west-1.amazonaws.com/bbd-spring-demo:${env.GIT_COMMIT_HASH}</image>
+                        <image>810201417706.dkr.ecr.eu-west-1.amazonaws.com/bbd-spring-demo:${version.number}</image>
                         <credHelper>ecr-login</credHelper>
                     </to>
                 </configuration>
