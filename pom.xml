@@ -62,7 +62,6 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}-${project.version}-${git.}</finalName>
         <plugins>
             <plugin>
                 <groupId>pl.project13.maven</groupId>
@@ -74,7 +73,7 @@
                         <goals>
                             <goal>revision</goal>
                         </goals>
-                        <phase>validate</phase>
+                        <phase>verify</phase>
                     </execution>
                 </executions>
                 <configuration>
