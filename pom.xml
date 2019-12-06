@@ -64,12 +64,36 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.4</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                    <prefix>git</prefix>
+                    <verbose>false</verbose>
+                    <gitDescribe>
+                        <skip>false</skip>
+                        <always>false</always>
+                        <dirty>-dirty</dirty>
+                    </gitDescribe>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>1.6.1</version>
                 <configuration>
                     <to>
-                        <image>810201417706.dkr.ecr.eu-west-1.amazonaws.com/bbd-spring-demo:${project.version}</image>
+                        <image>810201417706.dkr.ecr.eu-west-1.amazonaws.com/bbd-spring-demo:${git.commit.id.describe-short}</image>
                         <credHelper>ecr-login</credHelper>
                     </to>
                 </configuration>
