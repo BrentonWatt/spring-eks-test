@@ -16,7 +16,6 @@
 
     <properties>
         <java.version>11</java.version>
-        <gitCommit>${git.commit}</gitCommit>
     </properties>
 
     <dependencies>
@@ -63,7 +62,7 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}-${project.version}-${git.commit.id.describe-short}</finalName>
+        <finalName>${project.artifactId}-${project.version}-${git.}</finalName>
         <plugins>
             <plugin>
                 <groupId>pl.project13.maven</groupId>
@@ -89,7 +88,7 @@
                 <version>1.6.1</version>
                 <configuration>
                     <to>
-                        <image>810201417706.dkr.ecr.eu-west-1.amazonaws.com/bbd-spring-demo:${git.commit.id.describe-short}</image>
+                        <image>810201417706.dkr.ecr.eu-west-1.amazonaws.com/bbd-spring-demo:${git.commit.id.abbrev}</image>
                         <credHelper>ecr-login</credHelper>
                     </to>
                 </configuration>
