@@ -15,7 +15,7 @@ volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws'),
       }
     }
     stage('Build a Maven project') {
-      scmInfo = checkout scmcheckout scm
+      scmInfo = checkout scm
       container('maven') {
         sh 'mvn -B clean package'
         echo "scm : ${scmInfo}"
