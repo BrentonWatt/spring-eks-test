@@ -22,7 +22,7 @@ volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws'),
         echo "scm : ${scmInfo}"
         GIT_HASH="${scmInfo.GIT_COMMIT}"
         echo "${GIT_HASH}"
-        sh 'echo $GIT_HASH'
+        sh 'echo ${GIT_HASH}'
       }
     }
     stage('Build Integration Tests') {
@@ -31,13 +31,16 @@ volumes: [secretVolume(secretName: 'aws-creds', mountPath: '/root/.aws'),
       }
     }
     stage('Build Docker Jib ') {
+      gitcom = GIT_HASH
       container('maven') {
           sh 'unset AWS_ACCESS_KEY_ID && unset AWS_SECRET_ACCESS_KEY'
           sh 'AWS_ACCESS_KEY_ID=$(sed -n \'1p\' ~/.aws/credentials) && AWS_SECRET_ACCESS_KEY=$(sed -n \'2p\' ~/.aws/credentials)'
           sh 'echo $AWS_ACCESS_KEY_ID'
           sh 'echo ${GIT_HASH}'
-          sh 'echo $GIT_HASH'
-          sh 'mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Dversion.number=$GIT_HASH'
+          echo "${GIT_HASH}"
+          echo "${gitcom}"
+          sh 'echo $gitcom'
+          sh 'mvn -B com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Dversion.number=${gitcom}'
       }
     }
 
