@@ -73,12 +73,11 @@
                         <goals>
                             <goal>revision</goal>
                         </goals>
-                        <phase>verify</phase>
                     </execution>
                 </executions>
                 <configuration>
                     <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
-                    <includeOnlyProperties>true</includeOnlyProperties>
+                    <injectAllReactorProjects>true</injectAllReactorProjects>
                 </configuration>
             </plugin>
 
