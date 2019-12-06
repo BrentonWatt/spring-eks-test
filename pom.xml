@@ -71,17 +71,16 @@
                 <version>2.2.4</version>
                 <executions>
                     <execution>
-                        <id>get-the-git-infos</id>
+                        <phase>validate</phase>
                         <goals>
                             <goal>revision</goal>
                         </goals>
-                        <phase>verify</phase>
                     </execution>
                 </executions>
                 <configuration>
-                    <generateGitPropertiesFile>false</generateGitPropertiesFile>
+                    <dateFormat>yyyyMMdd-HHmmss</dateFormat><!--  human-readable part of the version number -->
                     <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
-                    <injectAllReactorProjects>true</injectAllReactorProjects>
+                    <generateGitPropertiesFile>false</generateGitPropertiesFile><!-- somehow necessary. otherwise the variables are not available in the pom -->
                 </configuration>
             </plugin>
 
