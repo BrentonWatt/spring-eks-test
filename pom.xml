@@ -78,6 +78,7 @@
                 </executions>
                 <configuration>
                     <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                    <includeOnlyProperties>true</includeOnlyProperties>
                 </configuration>
             </plugin>
 
