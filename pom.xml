@@ -73,6 +73,7 @@
                         <goals>
                             <goal>revision</goal>
                         </goals>
+                        <phase>verify</phase>
                     </execution>
                 </executions>
                 <configuration>
